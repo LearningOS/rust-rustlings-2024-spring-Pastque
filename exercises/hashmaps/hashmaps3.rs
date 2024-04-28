@@ -9,12 +9,17 @@
 // table is to use a Hashmap. The solution is partially written to use a
 // Hashmap, complete it to pass the test.
 //
+// 给出了足球比赛的得分列表(每行一个)。
+// 每一行的形式都是:“<team_1_name>， <team_2_name>， <team_1_goals>， <team_2_goals>”
+// 例如:England,France,4,2 (England进了4球，France 2)，
+// 你必须构建一个包含球队名称、球队进了多少球、丢了多少球的得分表。
+// 构建scores表的一种方法是使用Hashmap。解决方案的部分代码使用了Hashmap，完成后通过测试。
+//
 // Make me pass the tests!
 //
 // Execute `rustlings hint hashmaps3` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
 
 use std::collections::HashMap;
 
@@ -26,6 +31,7 @@ struct Team {
 
 fn build_scores_table(results: String) -> HashMap<String, Team> {
     // The name of the team is the key and its associated struct is the value.
+    // 队员的名字是键，与其关联的结构体是值。
     let mut scores: HashMap<String, Team> = HashMap::new();
 
     for r in results.lines() {
@@ -39,6 +45,27 @@ fn build_scores_table(results: String) -> HashMap<String, Team> {
         // will be the number of goals conceded from team_2, and similarly
         // goals scored by team_2 will be the number of goals conceded by
         // team_1.
+        //
+        // TODO:用从当前行提取的详细信息填充分数表。
+        // 请记住，team_1的进球数将是team_2的失球数，同样，team_2的进球数将是team_1的失球数。
+        //
+        // scores.insert(team_1_name, Team{goals_scored: team_1_score, goals_conceded: team_2_score});
+        // scores.insert(team_2_name, Team{goals_scored: team_2_score, goals_conceded: team_1_score});
+        
+        let team_1 = scores.entry(team_1_name).or_insert(Team {
+            goals_scored: 0,
+            goals_conceded: 0,
+        });
+        team_1.goals_scored += team_1_score;
+        team_1.goals_conceded += team_2_score;
+
+
+        let team_2 = scores.entry(team_2_name).or_insert(Team {
+            goals_scored: 0,
+            goals_conceded: 0,
+        });
+        team_2.goals_scored += team_2_score;
+        team_2.goals_conceded += team_1_score;
     }
     scores
 }

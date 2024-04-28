@@ -8,10 +8,16 @@
 // Only the two iterator methods (count_iterator and count_collection_iterator)
 // need to be modified.
 //
+// 让我们定义一个简单的模型来跟踪ruslings练习的进度。
+// 进度将使用哈希映射进行建模。练习的名称是键，进度是值。
+// 我们创建了两个计数函数，根据给定的进度计算练习的次数。
+// 使用迭代器重新创建计数功能。尽量不要使用命令式循环(for、while)。
+// 只需要修改两个迭代器方法( count_iterator 和 count_collection_iterator )。
+//
 // Execute `rustlings hint iterators5` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
+
 
 use std::collections::HashMap;
 
@@ -35,7 +41,9 @@ fn count_for(map: &HashMap<String, Progress>, value: Progress) -> usize {
 fn count_iterator(map: &HashMap<String, Progress>, value: Progress) -> usize {
     // map is a hashmap with String keys and Progress values.
     // map = { "variables1": Complete, "from_str": None, ... }
-    todo!();
+    // todo!();
+
+    map.iter().filter(|x| x.1 == &value).count()
 }
 
 fn count_collection_for(collection: &[HashMap<String, Progress>], value: Progress) -> usize {
@@ -54,7 +62,12 @@ fn count_collection_iterator(collection: &[HashMap<String, Progress>], value: Pr
     // collection is a slice of hashmaps.
     // collection = [{ "variables1": Complete, "from_str": None, ... },
     //     { "variables2": Complete, ... }, ... ]
-    todo!();
+    // todo!();
+
+    collection
+        .iter()
+        .map(|hashmap| count_iterator(hashmap, value))
+        .sum()
 }
 
 #[cfg(test)]

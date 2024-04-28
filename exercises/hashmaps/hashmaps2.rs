@@ -9,12 +9,18 @@
 // more than 11 in total - we have a lot of mouths to feed. You are not allowed
 // to insert any more of these fruits!
 //
+// 我们正在收集不同的水果来烤一个美味的水果蛋糕。为此，我们有一个篮子，我们将以散列映射的形式表示它。
+// 键表示我们收集的每个水果的名称，值表示我们收集了多少个特定的水果。
+// 篮子散列图中已经有三种水果:苹果(4)、芒果(2)和荔枝(5)。
+// 你必须把水果放进篮子里，这样每一种水果至少有一种，总数不超过11种——我们要养活很多张嘴。
+// 你不能再用insert()把这些水果塞进去了!
+//
 // Make me pass the tests!
 //
 // Execute `rustlings hint hashmaps2` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
+
 
 use std::collections::HashMap;
 
@@ -40,6 +46,9 @@ fn fruit_basket(basket: &mut HashMap<Fruit, u32>) {
         // TODO: Insert new fruits if they are not already present in the
         // basket. Note that you are not allowed to put any type of fruit that's
         // already present!
+        // 待办事项:如果篮子里没有水果，就放入新的水果。注意，你不能把任何已经存在的水果放进去!
+        basket.entry(fruit).or_insert(1);
+        
     }
 }
 

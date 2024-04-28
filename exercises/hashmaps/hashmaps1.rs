@@ -6,22 +6,29 @@
 // types of fruits (e.g apple, banana, mango) in the basket and the total count
 // of all the fruits should be at least five.
 //
+// 我们需要定义散列表形式的一篮子水果。键表示水果的名称，值表示篮子中有多少种这种水果。
+// 你必须把至少三种不同类型的水果(如苹果、香蕉、芒果)放入篮子中，所有水果的总数应至少为五种。
+//
 // Make me compile and pass the tests!
 //
 // Execute `rustlings hint hashmaps1` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
+
 
 use std::collections::HashMap;
 
 fn fruit_basket() -> HashMap<String, u32> {
-    let mut basket = // TODO: declare your hash map here.
+    let mut basket = HashMap::new();// TODO: declare your hash map here.
 
     // Two bananas are already given for you :)
     basket.insert(String::from("banana"), 2);
-
+    
     // TODO: Put more fruits in your basket here.
+    basket.insert(String::from("apple"), 2);
+    basket.insert(String::from("mango"), 2);
+    
+    
 
     basket
 }

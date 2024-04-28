@@ -5,13 +5,20 @@
 //
 // Consider what you can add to the Licensed trait.
 //
+// 你的任务是为这两个结构实现许可特征，并使它们返回相同的信息，
+// 而不编写相同的函数两次。考虑一下您可以添加到许可特征的内容。
+//
 // Execute `rustlings hint traits3` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
+
 
 pub trait Licensed {
-    fn licensing_info(&self) -> String;
+    fn licensing_info(&self) -> String{
+        String::from("Some information")
+    }
+    
+
 }
 
 struct SomeSoftware {

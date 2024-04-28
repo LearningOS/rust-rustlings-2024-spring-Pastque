@@ -18,9 +18,18 @@
 //   the first element is the string, the second one is the command.
 // - The output element is going to be a Vector of strings.
 //
-// No hints this time!
 
-// I AM NOT DONE
+// 让我们建立一个函数形式的小机器。
+// 作为输入，我们将给出一个字符串和命令列表。
+// 这些命令决定将对字符串应用什么操作。
+// - 它可以是:大写string
+// - 修剪 string
+// - 添加 "bar"到字符串指定的时间，
+// 其确切形式将是:
+// - 输入将是一个2长度元组的Vector，第一个元素是字符串，第二个是命令。
+// - 输出元素将是一个字符串向量。
+
+// No hints this time!
 
 pub enum Command {
     Uppercase,
@@ -32,11 +41,54 @@ mod my_module {
     use super::Command;
 
     // TODO: Complete the function signature!
-    pub fn transformer(input: ???) -> ??? {
-        // TODO: Complete the output declaration!
-        let mut output: ??? = vec![];
-        for (string, command) in input.iter() {
-            // TODO: Complete the function body. You can do it!
+    // pub fn transformer0(input: Vec<(String,Command)>) -> Vec<String>{
+    //     // TODO: Complete the output declaration!
+    //     let mut output: Vec<String> = vec![];
+    //     for (string, command) in input.iter() {
+    //         // TODO: Complete the function body. You can do it!
+    //         match command{
+    //             Command::Uppercase => {*string = string.to_uppercase();},
+    //             Command::Trim => {string = string.trim();},
+    //             Command::Append(x) => {
+    //                 for _ in 0..*x{
+    //                     *string = format!("{}bar",string);
+    //                 }
+    //             }
+    //         }
+    //     }
+    //     output
+    // }
+
+    // pub fn transformer(input: Vec<(String, Command)>) -> Vec<String> {
+    //     let mut output: Vec<String> = Vec::with_capacity(input.len());
+    //     for (mut string, command) in input {
+    //         match command {
+    //             Command::Uppercase => {
+    //                 string = string.to_uppercase();
+    //             }
+    //             Command::Trim => {
+    //                 string = string.trim().to_owned();
+    //             }
+    //             Command::Append(times) => {
+    //                 for _ in 0..times {
+    //                     string = format!("{}bar", string);
+    //                 }
+    //             }
+    //         };
+    //         output.push(string);
+    //     }
+    //     output
+    // }
+
+    pub fn transformer(input: Vec<(String, Command)>) -> Vec<String> {
+        let mut output: Vec<String> = Vec::with_capacity(input.len());
+        for (mut string, command) in input {
+            let astr = match command {
+                Command::Uppercase => string.to_uppercase(),
+                Command::Trim => string.trim().to_owned(),
+                Command::Append(times) => format!("{}{}", string, "bar".repeat(times)),
+            };
+            output.push(astr);
         }
         output
     }
@@ -45,7 +97,7 @@ mod my_module {
 #[cfg(test)]
 mod tests {
     // TODO: What do we need to import to have `transformer` in scope?
-    use ???;
+    use super::my_module::transformer;
     use super::Command;
 
     #[test]

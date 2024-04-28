@@ -13,12 +13,23 @@
 //
 // No hints this time ;)
 
-// I AM NOT DONE
+
 
 // Put your function here!
 // fn calculate_price_of_apples {
 
 // Don't modify this function!
+
+// This is a quiz for the following sections:VariablesFunctionsIfMary is buying apples. 
+// 这是一个关于以下部分的测验:变量函数玛丽正在买苹果。
+// The price of an apple is calculated as follows: An apple costs 2 rustbucks.
+// 一个苹果的价格计算方法如下:一个苹果2卢比。
+// If Mary buys more than 40 apples, each apple only costs 1 rustbuck! 
+// 如果玛丽买了40多个苹果，每个苹果只花了1卢比!
+// Write a function that calculates the price of an order of apples given the quantity bought. 
+// 编写一个函数，计算给定购买量的苹果订单的价格。
+
+
 #[test]
 fn verify_test() {
     let price1 = calculate_price_of_apples(35);
@@ -31,3 +42,14 @@ fn verify_test() {
     assert_eq!(41, price3);
     assert_eq!(65, price4);
 }
+
+fn calculate_price_of_apples(x:i32) -> i32{
+    if x <= 40{
+        x*2
+    }else{
+        x
+    }
+}
+
+
+

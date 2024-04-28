@@ -5,13 +5,15 @@
 // SystemTime and UNIX_EPOCH from the std::time module. Bonus style points if
 // you can do it with one line!
 //
+// 你可以使用` use `关键字将任何地方的模块路径，特别是Rust标准库中的模块路径引入到你的作用域中。
+// 从std::time模块中获取SystemTime和UNIX_EPOCH。如果你能用一行就能做到，那就有额外的风格加分!
+//
 // Execute `rustlings hint modules3` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
 
 // TODO: Complete this use statement
-use ???
+use std::time::{SystemTime, UNIX_EPOCH};
 
 fn main() {
     match SystemTime::now().duration_since(UNIX_EPOCH) {

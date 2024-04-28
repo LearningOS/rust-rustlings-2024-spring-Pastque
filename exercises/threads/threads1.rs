@@ -5,6 +5,9 @@
 // wait until all the spawned threads have finished and should collect their
 // return values into a vector.
 //
+// 这个程序生成了多个线程，每个线程运行时间至少250ms，并且每个线程返回它们完成所需的时间。
+// 程序应该等待所有衍生线程完成，并将它们的返回值收集到一个向量中。
+//
 // Execute `rustlings hint threads1` or use the `hint` watch subcommand for a
 // hint.
 
