@@ -57,7 +57,7 @@ impl Default for Person {
 //
 // 如果在解析age时出了问题，则返回Person的默认值，否则返回带有结果的实例化的Person对象
 //
-// I AM NOT DONE
+
 
 impl From<&str> for Person {
     fn from(s: &str) -> Person {
@@ -68,10 +68,14 @@ impl From<&str> for Person {
         }
         // let x: Vec<&str> = s.split(",").collect();
         match s.split_once(",") {
-            Some((a, b)) => Person {
-                name: a.to_string(),
-                age: b.,
-            },
+            Some((a, _)) if a.is_empty()=> Default::default(),
+            Some((a, b)) => match b.parse::<usize>(){
+                Ok(age) => Person{
+                    name: a.to_string(),
+                    age:age,
+                },
+                Err(_) => Default::default(),
+            }
             None => Person::default(),
         }
     }
